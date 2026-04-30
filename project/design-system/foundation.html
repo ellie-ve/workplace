@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ITUI · Foundation</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="base.css" />
+</head>
+<body>
+<main class="doc">
+  <header class="doc-header">
+    <p class="doc-eyebrow">ITUI Design System · Foundation</p>
+    <h1 class="doc-title">Foundation</h1>
+    <p class="doc-lede">Brand · Semantic · Palette 컬러 시스템과 레이아웃 그리드, 그리고 Spacing / Type / Radius 등 글로벌 토큰을 정의합니다.</p>
+  </header>
+
+  <!-- 1. Brand Core -->
+  <section class="doc-section" id="brand">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Color · Brand</h2>
+    </div>
+    <p class="section-desc">ITUI의 아이덴티티를 상징하는 핵심 컬러. 서비스 전반에 걸쳐 일관된 브랜드 경험을 만듭니다.</p>
+
+    <h3 class="subsection-title">Brand Core</h3>
+    <div class="brand-core">
+      <article class="brand-card">
+        <div class="swatch-color" style="background:#009CE0;color:#fff">#009CE0</div>
+        <div class="swatch-meta">
+          <p class="brand-role">Primary</p>
+          <p class="brand-name">Echo Blue</p>
+          <span class="swatch-step">Primary / 500</span>
+        </div>
+      </article>
+      <article class="brand-card">
+        <div class="swatch-color" style="background:#595858;color:#fff">#595858</div>
+        <div class="swatch-meta">
+          <p class="brand-role">Secondary</p>
+          <p class="brand-name">Echo Neutral</p>
+          <span class="swatch-step">Neutral / 500</span>
+        </div>
+      </article>
+      <article class="brand-card">
+        <div class="swatch-color" style="background:#0F0F0F;color:#fff">#0F0F0F</div>
+        <div class="swatch-meta">
+          <p class="brand-role">Black</p>
+          <p class="brand-name">Echo Black</p>
+          <span class="swatch-step">Neutral / 950</span>
+        </div>
+      </article>
+      <article class="brand-card">
+        <div class="swatch-color" style="background:#FFFFFF;color:#0F0F0F;border-bottom:1px solid #EDEDED">#FFFFFF</div>
+        <div class="swatch-meta">
+          <p class="brand-role">White</p>
+          <p class="brand-name">Echo White</p>
+          <span class="swatch-step">White</span>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="subsection-title">Primary Scale · Echo Blue</h3>
+    <div class="color-row" id="primary-scale"></div>
+
+    <h3 class="subsection-title">Secondary Scale · Echo Neutral</h3>
+    <div class="color-row" id="neutral-scale"></div>
+  </section>
+
+  <!-- 2. Semantic -->
+  <section class="doc-section" id="semantic">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Color · Semantic</h2>
+    </div>
+    <p class="section-desc">성공 / 정보 / 경고 / 에러 등 시스템 상태를 표현하여 사용자가 인터페이스 피드백을 즉각적으로 인지하도록 돕습니다.</p>
+    <div class="semantic-grid" id="semantic-grid"></div>
+  </section>
+
+  <!-- 3. Palette -->
+  <section class="doc-section" id="palette">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Color · Palette</h2>
+    </div>
+    <p class="section-desc">브랜드와 시맨틱 컬러를 보조하며, 데이터 식별 및 풍부한 시각적 표현을 위한 보조 팔레트입니다.</p>
+
+    <h3 class="subsection-title">Blue Grey</h3>
+    <div class="color-row" id="palette-bluegrey"></div>
+    <h3 class="subsection-title">Indigo</h3>
+    <div class="color-row" id="palette-indigo"></div>
+    <h3 class="subsection-title">Deep Purple</h3>
+    <div class="color-row" id="palette-purple"></div>
+    <h3 class="subsection-title">Teal</h3>
+    <div class="color-row" id="palette-teal"></div>
+  </section>
+
+  <!-- 4. Grid -->
+  <section class="doc-section" id="grid">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Layout Grid</h2>
+    </div>
+    <p class="section-desc">모든 컴포넌트 페이지에 공통 적용되는 12 컬럼 Stretch 그리드입니다.</p>
+    <div class="grid-demo">
+      <div class="grid-demo-stage" id="grid-stage"></div>
+    </div>
+    <table class="token-table" style="margin-top:16px">
+      <thead><tr><th>Property</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Columns</td><td class="mono">12</td></tr>
+        <tr><td>Type</td><td class="mono">Stretch (Auto)</td></tr>
+        <tr><td>Gutter</td><td class="mono">24px</td></tr>
+        <tr><td>Margin</td><td class="mono">32px</td></tr>
+        <tr><td>Alignment</td><td class="mono">Center</td></tr>
+        <tr><td>Container Width</td><td class="mono">1376px</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 5. Spacing -->
+  <section class="doc-section" id="spacing">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Spacing</h2>
+    </div>
+    <table class="token-table">
+      <thead><tr><th style="width:160px">Token</th><th style="width:120px">Value</th><th>Preview</th><th>Usage</th></tr></thead>
+      <tbody id="spacing-rows"></tbody>
+    </table>
+  </section>
+
+  <!-- 6. Typography -->
+  <section class="doc-section" id="type">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Typography</h2>
+    </div>
+    <p class="section-desc">Pretendard 기반. Display · Heading · Body · Caption 4개 카테고리에 11단계 사이즈와 4단계 weight를 제공합니다.</p>
+
+    <h3 class="subsection-title">Display</h3>
+    <div class="type-list" id="type-display"></div>
+
+    <h3 class="subsection-title">Heading</h3>
+    <div class="type-list" id="type-heading"></div>
+
+    <h3 class="subsection-title">Body</h3>
+    <div class="type-list" id="type-body"></div>
+
+    <h3 class="subsection-title">Caption</h3>
+    <div class="type-list" id="type-caption"></div>
+
+    <h3 class="subsection-title">Font Weight</h3>
+    <div class="weight-grid" id="weight-grid"></div>
+  </section>
+
+  <!-- 7. Radius -->
+  <section class="doc-section" id="radius">
+    <div class="section-head">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Radius</h2>
+    </div>
+    <p class="section-desc">모서리 둥글기 토큰. 컴포넌트의 성격과 강도에 따라 단계별로 사용합니다.</p>
+    <table class="token-table">
+      <thead><tr><th style="width:160px">Token</th><th style="width:120px">Value</th><th style="width:120px">Preview</th><th>Usage</th></tr></thead>
+      <tbody id="radius-rows"></tbody>
+    </table>
+  </section>
+
+  <!-- 8. Stroke -->
+  <section class="doc-section" id="stroke">
+    <div class="section-head">
+      <span class="section-num">08</span>
+      <h2 class="section-title">Stroke</h2>
+    </div>
+    <p class="section-desc">테두리 두께 토큰.</p>
+    <table class="token-table">
+      <thead><tr><th style="width:160px">Token</th><th style="width:120px">Value</th><th style="width:120px">Preview</th><th>Usage</th></tr></thead>
+      <tbody id="stroke-rows"></tbody>
+    </table>
+  </section>
+
+  <!-- 9. Heights -->
+  <section class="doc-section" id="heights">
+    <div class="section-head">
+      <span class="section-num">09</span>
+      <h2 class="section-title">Heights</h2>
+    </div>
+    <p class="section-desc">컴포넌트별 높이 토큰. Button · Icon · Avatar · Form · Atomic · Composite/Navigation 으로 그룹화됩니다.</p>
+    <table class="token-table">
+      <thead><tr><th style="width:280px">Token</th><th>Value</th></tr></thead>
+      <tbody id="height-rows"></tbody>
+    </table>
+  </section>
+
+  <footer class="doc-footer">
+    <span>ITUI · Foundation</span>
+    <span>Design by ITUI 2025</span>
+  </footer>
+</main>
+
+<script src="foundation.js?v=3"></script>
+</body>
+</html>

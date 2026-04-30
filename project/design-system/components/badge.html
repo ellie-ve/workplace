@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ITUI · Atomic / Badge</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="../tokens.css?v=2" />
+<link rel="stylesheet" href="../semantic.css?v=2" />
+<link rel="stylesheet" href="../base.css?v=2" />
+<link rel="stylesheet" href="badge.css?v=5" />
+<style>
+  .demo-grid {
+    background: #fff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+  }
+  .demo-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xl);
+    flex-wrap: wrap;
+    padding: 16px 0;
+  }
+  .demo-row + .demo-row { border-top: 1px dashed var(--color-neutral-100); }
+  .demo-label {
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    color: var(--color-neutral-500);
+    width: 110px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .demo-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 56px;
+  }
+  .demo-cell-label {
+    font-family: var(--font-family-mono);
+    font-size: 10px;
+    color: var(--color-neutral-500);
+  }
+  .demo-icon-box {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: var(--color-neutral-100);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-neutral-600);
+  }
+</style>
+</head>
+<body>
+<main class="doc">
+  <header class="doc-header">
+    <p class="doc-eyebrow">ITUI Design System · Atomic</p>
+    <h1 class="doc-title">Badge</h1>
+    <p class="doc-lede">항목에 부가적인 상태나 수치를 덧붙여 보여주는 보조 표시 요소.</p>
+  </header>
+
+  <!-- Variants -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Variants</h2>
+    </div>
+    <table class="token-table">
+      <thead><tr><th style="width:160px">Property</th><th>Values</th></tr></thead>
+      <tbody>
+        <tr><td>Type</td><td class="mono">Circle · Overflow · Dot</td></tr>
+        <tr><td>Color</td><td class="mono">red (#F44336) — 단일 컬러</td></tr>
+        <tr><td>Size</td><td class="mono">20px (Dot은 6px) — 단일 사이즈</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Type -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Type</h2>
+    </div>
+    <p class="section-desc">3가지 타입. 모두 red 컬러 / 20px 고정 (Dot은 6px).</p>
+
+    <div class="demo-grid">
+      <div class="demo-row">
+        <div class="demo-cell">
+          <span class="itui-badge itui-badge--circle">19</span>
+          <span class="demo-cell-label">Circle (number)</span>
+        </div>
+        <div class="demo-cell">
+          <span class="itui-badge">100</span>
+          <span class="demo-cell-label">Overflow (3-digit)</span>
+        </div>
+        <div class="demo-cell">
+          <span class="itui-badge itui-badge--dot" aria-label="알림"></span>
+          <span class="demo-cell-label">Dot (no text)</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Tokens</h3>
+    <table class="token-table">
+      <thead><tr><th style="width:200px">Property</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Color</td>      <td class="mono">#F44336 (color/semantic/red/500)</td></tr>
+        <tr><td>Text Color</td> <td class="mono">#FFFFFF (text/inverse)</td></tr>
+        <tr><td>Height</td>     <td class="mono">20px (height.badge)</td></tr>
+        <tr><td>Min-width</td>  <td class="mono">20px (height.badge)</td></tr>
+        <tr><td>Padding (H)</td><td class="mono">4px (spacing.xs)</td></tr>
+        <tr><td>Radius</td>     <td class="mono">full (radius.full)</td></tr>
+        <tr><td>Font Size</td>  <td class="mono">12px (font.size.sm)</td></tr>
+        <tr><td>Font Weight</td><td class="mono">600 (semibold)</td></tr>
+        <tr><td>Width</td>      <td class="mono">hug (layout.width.hug)</td></tr>
+        <tr><td>Auto Layout</td><td class="mono">horizontal · center</td></tr>
+        <tr><td>Circle</td>     <td class="mono">20 × 20 (height.badge square)</td></tr>
+        <tr><td>Dot</td>        <td class="mono">6 × 6 (height.dot.xs)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Usage -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Usage</h2>
+    </div>
+    <p class="section-desc">아이콘이나 텍스트 위에 얹어 사용하는 예시. <code>.itui-badge-anchor</code>로 감싸면 자동으로 우측 상단에 위치합니다.</p>
+
+    <div class="demo-grid">
+      <div class="demo-row">
+        <span class="demo-label">With Icon</span>
+        <span class="itui-badge-anchor">
+          <span class="demo-icon-box">🔔</span>
+          <span class="itui-badge itui-badge--circle">3</span>
+        </span>
+        <span class="itui-badge-anchor">
+          <span class="demo-icon-box">📩</span>
+          <span class="itui-badge">100</span>
+        </span>
+        <span class="itui-badge-anchor">
+          <span class="demo-icon-box">👤</span>
+          <span class="itui-badge itui-badge--dot"></span>
+        </span>
+      </div>
+      <div class="demo-row">
+        <span class="demo-label">Inline</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;">
+          <span style="font-size:14px;">새 메시지</span>
+          <span class="itui-badge itui-badge--circle">19</span>
+        </span>
+        <span style="display:inline-flex;align-items:center;gap:8px;">
+          <span style="font-size:14px;">최근 활동</span>
+          <span class="itui-badge itui-badge--dot"></span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="doc-footer">
+    <span><a href="../foundation.html">← Foundation</a> · <a href="button.html">Button</a></span>
+    <span>ITUI · Atomic / Badge</span>
+  </footer>
+</main>
+</body>
+</html>

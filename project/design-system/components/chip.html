@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ITUI · Atomic / Chip</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="../tokens.css?v=2" />
+<link rel="stylesheet" href="../semantic.css?v=2" />
+<link rel="stylesheet" href="../base.css?v=2" />
+<link rel="stylesheet" href="chip.css?v=2" />
+<style>
+  .matrix {
+    display: grid;
+    grid-template-columns: 140px repeat(6, 1fr);
+    background: #fff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .matrix .cell {
+    padding: 14px 12px;
+    border-right: 1px solid var(--color-neutral-100);
+    border-bottom: 1px solid var(--color-neutral-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+  }
+  .matrix .cell:nth-child(7n) { border-right: none; }
+  .matrix .cell.head {
+    background: var(--color-neutral-50);
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    color: var(--color-neutral-700);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    min-height: 36px;
+    padding: 8px 12px;
+  }
+  .matrix .cell.head-style {
+    background: var(--color-neutral-100);
+    color: var(--color-neutral-900);
+    font-size: 12px;
+  }
+  .matrix .cell.row-head { justify-content: flex-start; }
+  .matrix .cell.section-head {
+    background: var(--color-neutral-100);
+    color: var(--color-neutral-900);
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    padding: 10px 16px;
+    font-family: var(--font-family-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .matrix-divider {
+    grid-column: 1 / -1;
+    border-bottom: 2px solid var(--color-neutral-200);
+  }
+  /* split outline/filled headers */
+  .matrix .cell.style-outline { color: var(--text-primary-default); }
+  .matrix .cell.style-filled  { color: var(--color-neutral-900); }
+</style>
+</head>
+<body>
+<main class="doc">
+  <header class="doc-header">
+    <p class="doc-eyebrow">ITUI Design System · Atomic</p>
+    <h1 class="doc-title">Chip</h1>
+    <p class="doc-lede">선택, 필터, 입력 값을 간결한 형태로 표시하는 소형 인터랙션 요소.</p>
+  </header>
+
+  <!-- Variants -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Variants</h2>
+    </div>
+    <table class="token-table">
+      <thead><tr><th style="width:160px">Property</th><th>Values</th></tr></thead>
+      <tbody>
+        <tr><td>Style</td><td class="mono">Outline · Filled</td></tr>
+        <tr><td>Size</td> <td class="mono">Lg (32) · Md (28) · Sm (24)</td></tr>
+        <tr><td>Type</td> <td class="mono">Label · LabelClose · CheckLabel · CheckLabelClose · AvatarLabel · AvatarLabelClose</td></tr>
+        <tr><td>State</td><td class="mono">Default · Hover · Selected · Disabled</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Outline matrix -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Outline · State Matrix</h2>
+    </div>
+    <p class="section-desc">Type 6종 × State 4종 × Size 3종.</p>
+
+    <div class="matrix" id="m-outline"></div>
+  </section>
+
+  <!-- Filled matrix -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Filled · State Matrix</h2>
+    </div>
+
+    <div class="matrix" id="m-filled"></div>
+  </section>
+
+  <!-- Tokens -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Tokens</h2>
+    </div>
+    <table class="token-table">
+      <thead><tr><th style="width:160px">Property</th><th>Lg</th><th>Md</th><th>Sm</th></tr></thead>
+      <tbody>
+        <tr><td>Height</td>    <td class="mono">32 (height.chip.lg)</td><td class="mono">28 (height.chip.md)</td><td class="mono">24 (height.chip.sm)</td></tr>
+        <tr><td>Padding</td>   <td class="mono">8 (spacing.sm)</td>     <td class="mono">8 (spacing.sm)</td>     <td class="mono">8 (spacing.sm)</td></tr>
+        <tr><td>Gap</td>       <td class="mono">4 (spacing.xs)</td>    <td class="mono">4 (spacing.xs)</td>    <td class="mono">4 (spacing.xs)</td></tr>
+        <tr><td>Radius</td>    <td class="mono">full (radius.full)</td><td class="mono">full</td>             <td class="mono">full</td></tr>
+        <tr><td>Stroke</td>    <td class="mono">1 (stroke.xs)</td>     <td class="mono">1 (stroke.xs)</td>     <td class="mono">1 (stroke.xs)</td></tr>
+        <tr><td>Icon</td>      <td class="mono">16 (height.icon.md)</td><td class="mono">16</td>              <td class="mono">12</td></tr>
+        <tr><td>Font Size</td> <td class="mono">14 (font.size.md)</td> <td class="mono">14</td>               <td class="mono">12 (font.size.sm)</td></tr>
+        <tr><td>Width</td>     <td class="mono">hug</td>               <td class="mono">hug</td>              <td class="mono">hug</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="doc-footer">
+    <span><a href="../foundation.html">← Foundation</a> · <a href="checkbox.html">Checkbox</a> · <a href="badge.html">Badge</a></span>
+    <span>ITUI · Atomic / Chip</span>
+  </footer>
+</main>
+
+<script>
+const ICON_CHECK = '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 8.5L6.5 11.5L12.5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const ICON_CLOSE = '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+const ICON_USER  = '<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="6" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M2.8 13.2c0.6-2.4 2.6-3.6 5.2-3.6s4.6 1.2 5.2 3.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
+
+const types = [
+  { key: 'Label',            states: ['default','hover','selected','disabled'] },
+  { key: 'LabelClose',       states: ['default','hover','selected','disabled'] },
+  { key: 'CheckLabel',       states: ['default','hover','selected','disabled'] },
+  { key: 'CheckLabelClose',  states: ['default','hover','selected','disabled'] },
+  { key: 'AvatarLabel',      states: ['default','hover'] },
+  { key: 'AvatarLabelClose', states: ['default','hover'] }
+];
+
+function chipMarkup(style, size, type, state) {
+  const cls = ['itui-chip', `itui-chip--${style}`, `itui-chip--${size}`];
+  if (state === 'hover')    cls.push('is-hover');
+  if (state === 'selected') cls.push('is-selected');
+  if (state === 'disabled') cls.push('is-disabled');
+
+  let leading = '';
+  let trailing = '';
+  if (type.startsWith('Check'))  { leading = `<span class="itui-chip-icon">${ICON_CHECK}</span>`; cls.push('has-leading'); }
+  if (type.startsWith('Avatar')) { leading = `<span class="itui-chip-avatar">${ICON_USER}</span>`; cls.push('has-leading'); }
+  if (type.endsWith('Close'))    { trailing = `<span class="itui-chip-icon itui-chip-close">${ICON_CLOSE}</span>`; cls.push('has-trailing'); }
+
+  return `<span class="${cls.join(' ')}">${leading}<span>텍스트</span>${trailing}</span>`;
+}
+
+function buildMatrix(targetId, style) {
+  const root = document.getElementById(targetId);
+  const sizes = ['lg','md','sm'];
+  // header row
+  let html = '<div class="cell head"></div>';
+  sizes.forEach(s => html += `<div class="cell head">${s.toUpperCase()}</div>`);
+  // pad to 7 columns: 1 row-head + 3 sizes = 4. We use 6 size columns total? No — single style per matrix → 4 cols.
+  root.style.gridTemplateColumns = '140px repeat(3, 1fr)';
+  // re-do header
+  html = '<div class="cell head"></div>';
+  sizes.forEach(s => html += `<div class="cell head">${s.toUpperCase()}</div>`);
+
+  types.forEach((t, i) => {
+    html += `<div class="cell section-head">${t.key}</div>`;
+    t.states.forEach(state => {
+      html += `<div class="cell head row-head">${state.charAt(0).toUpperCase()+state.slice(1)}</div>`;
+      sizes.forEach(s => {
+        html += `<div class="cell">${chipMarkup(style, s, t.key, state)}</div>`;
+      });
+    });
+  });
+  root.innerHTML = html;
+}
+
+buildMatrix('m-outline', 'outline');
+buildMatrix('m-filled',  'filled');
+</script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ITUI · Atomic / Button</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="../tokens.css?v=2" />
+<link rel="stylesheet" href="../semantic.css?v=2" />
+<link rel="stylesheet" href="../base.css?v=2" />
+<link rel="stylesheet" href="button.css?v=2" />
+<style>
+  /* Page-local helpers */
+  .demo-grid {
+    background: #fff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+  }
+  .demo-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    padding: 12px 0;
+  }
+  .demo-row + .demo-row { border-top: 1px dashed var(--color-neutral-100); }
+  .demo-label {
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    color: var(--color-neutral-500);
+    width: 100px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .matrix {
+    display: grid;
+    grid-template-columns: 100px repeat(4, 1fr);
+    background: #fff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .matrix .cell {
+    padding: 18px 16px;
+    border-right: 1px solid var(--color-neutral-100);
+    border-bottom: 1px solid var(--color-neutral-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+  }
+  .matrix .cell:nth-child(5n) { border-right: none; }
+  .matrix .cell.head {
+    background: var(--color-neutral-50);
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    color: var(--color-neutral-700);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    min-height: 36px;
+    padding: 8px 16px;
+    justify-content: flex-start;
+  }
+  .matrix .cell.row-head {
+    justify-content: flex-start;
+  }
+</style>
+</head>
+<body>
+<main class="doc">
+  <header class="doc-header">
+    <p class="doc-eyebrow">ITUI Design System · Atomic</p>
+    <h1 class="doc-title">Button</h1>
+    <p class="doc-lede">사용자의 동작을 실행하도록 유도하는 인터랙션 요소. 4가지 Style × 3 Size × 3 Type × 4 State.</p>
+  </header>
+
+  <!-- Variants overview -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Variants</h2>
+    </div>
+    <table class="token-table">
+      <thead><tr><th style="width:160px">Property</th><th>Values</th></tr></thead>
+      <tbody>
+        <tr><td>Style</td><td class="mono">Primary · Secondary · Alternative · Link</td></tr>
+        <tr><td>Size</td><td class="mono">Lg · Md · Sm</td></tr>
+        <tr><td>Type</td><td class="mono">Label · LabelIcon · IconOnly</td></tr>
+        <tr><td>State</td><td class="mono">Default · Hover · Pressed · Disabled</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Size matrix -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Size</h2>
+    </div>
+    <p class="section-desc">Lg · Md · Sm 세 가지 사이즈. Padding, Gap, Icon 크기가 각각 다릅니다.</p>
+
+    <div class="demo-grid">
+      <div class="demo-row">
+        <span class="demo-label">Large</span>
+        <button class="itui-btn itui-btn--primary itui-btn--lg">Label</button>
+        <button class="itui-btn itui-btn--primary itui-btn--lg">
+          <span class="itui-btn-icon">${ICON_PLUS}</span>Label
+        </button>
+        <button class="itui-btn itui-btn--primary itui-btn--lg itui-btn--icon-only" aria-label="Add">
+          <span class="itui-btn-icon">${ICON_PLUS}</span>
+        </button>
+      </div>
+      <div class="demo-row">
+        <span class="demo-label">Medium</span>
+        <button class="itui-btn itui-btn--primary itui-btn--md">Label</button>
+        <button class="itui-btn itui-btn--primary itui-btn--md">
+          <span class="itui-btn-icon">${ICON_PLUS}</span>Label
+        </button>
+        <button class="itui-btn itui-btn--primary itui-btn--md itui-btn--icon-only" aria-label="Add">
+          <span class="itui-btn-icon">${ICON_PLUS}</span>
+        </button>
+      </div>
+      <div class="demo-row">
+        <span class="demo-label">Small</span>
+        <button class="itui-btn itui-btn--primary itui-btn--sm">Label</button>
+        <button class="itui-btn itui-btn--primary itui-btn--sm">
+          <span class="itui-btn-icon">${ICON_PLUS_SM}</span>Label
+        </button>
+        <button class="itui-btn itui-btn--primary itui-btn--sm itui-btn--icon-only" aria-label="Add">
+          <span class="itui-btn-icon">${ICON_PLUS_SM}</span>
+        </button>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Size Tokens</h3>
+    <table class="token-table">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Large</th>
+          <th>Medium</th>
+          <th>Small</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Height</td>     <td class="mono">48px (height.button.lg)</td><td class="mono">40px (height.button.md)</td><td class="mono">32px (height.button.sm)</td></tr>
+        <tr><td>Padding (H)</td><td class="mono">24px (space.2xl)</td>      <td class="mono">20px (space.xl)</td>        <td class="mono">16px (space.lg)</td></tr>
+        <tr><td>Gap</td>         <td class="mono">8px (space.sm)</td>        <td class="mono">8px (space.sm)</td>         <td class="mono">4px (space.xs)</td></tr>
+        <tr><td>Radius</td>      <td class="mono">8px (radius.sm)</td>       <td class="mono">8px (radius.sm)</td>        <td class="mono">8px (radius.sm)</td></tr>
+        <tr><td>Icon</td>        <td class="mono">20px (icon.lg)</td>        <td class="mono">20px (icon.lg)</td>         <td class="mono">16px (icon.md)</td></tr>
+        <tr><td>Font Size</td>   <td class="mono">16px (font.lg)</td>        <td class="mono">14px (font.md)</td>         <td class="mono">14px (font.md)</td></tr>
+        <tr><td>Stroke</td>      <td class="mono">1px (stroke.xs)</td>       <td class="mono">1px (stroke.xs)</td>        <td class="mono">1px (stroke.xs)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Style × State matrix -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Style × State</h2>
+    </div>
+    <p class="section-desc">각 Style의 4가지 State. 모두 Medium / Label 기준입니다.</p>
+
+    <div class="matrix" id="state-matrix"></div>
+  </section>
+
+  <!-- Style × Type -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Style × Type</h2>
+    </div>
+    <p class="section-desc">Label / LabelIcon / IconOnly 세 가지 타입.</p>
+
+    <div class="demo-grid" id="style-type"></div>
+  </section>
+
+  <!-- Link -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Link Button</h2>
+    </div>
+    <p class="section-desc">텍스트 링크 형태. Label / LabelIcon / Underline 세 가지 변형.</p>
+
+    <div class="demo-grid">
+      <div class="demo-row">
+        <span class="demo-label">Default</span>
+        <button class="itui-btn itui-btn--link itui-btn--md">자세히 보기</button>
+        <button class="itui-btn itui-btn--link itui-btn--md">
+          <span class="itui-btn-icon">${ICON_PLUS}</span>자세히 보기
+        </button>
+        <button class="itui-btn itui-btn--link itui-btn--md is-underline">자세히 보기</button>
+      </div>
+      <div class="demo-row">
+        <span class="demo-label">Disabled</span>
+        <button class="itui-btn itui-btn--link itui-btn--md is-disabled" disabled>자세히 보기</button>
+        <button class="itui-btn itui-btn--link itui-btn--md is-disabled" disabled>
+          <span class="itui-btn-icon">${ICON_PLUS}</span>자세히 보기
+        </button>
+        <button class="itui-btn itui-btn--link itui-btn--md is-disabled is-underline" disabled>자세히 보기</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="doc-footer">
+    <span><a href="../foundation.html">← Foundation</a></span>
+    <span>ITUI · Atomic / Button</span>
+  </footer>
+</main>
+
+<script src="button.js?v=4"></script>
+</body>
+</html>

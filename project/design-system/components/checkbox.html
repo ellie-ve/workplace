@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ITUI · Atomic / Checkbox</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="../tokens.css?v=2" />
+<link rel="stylesheet" href="../semantic.css?v=2" />
+<link rel="stylesheet" href="../base.css?v=2" />
+<link rel="stylesheet" href="checkbox.css?v=2" />
+<style>
+  .matrix {
+    display: grid;
+    grid-template-columns: 140px repeat(4, 1fr);
+    background: #fff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .matrix .cell {
+    padding: 18px 16px;
+    border-right: 1px solid var(--color-neutral-100);
+    border-bottom: 1px solid var(--color-neutral-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 64px;
+  }
+  .matrix .cell:nth-child(5n) { border-right: none; }
+  .matrix .cell.head {
+    background: var(--color-neutral-50);
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    color: var(--color-neutral-700);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    min-height: 36px;
+    padding: 8px 12px;
+  }
+  .matrix .cell.row-head { justify-content: flex-start; }
+  .matrix .cell.section-head {
+    background: var(--color-neutral-100);
+    color: var(--color-neutral-900);
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    padding: 10px 16px;
+  }
+  .demo-grid {
+    background: #fff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-sm);
+    padding: 24px;
+  }
+  .demo-row {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding: 14px 0;
+  }
+  .demo-row + .demo-row { border-top: 1px dashed var(--color-neutral-100); }
+  .demo-label {
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    color: var(--color-neutral-500);
+    width: 110px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+<main class="doc">
+  <header class="doc-header">
+    <p class="doc-eyebrow">ITUI Design System · Atomic</p>
+    <h1 class="doc-title">Checkbox</h1>
+    <p class="doc-lede">여러 항목 중 하나 이상을 선택할 수 있게 제공되는 다중 선택 입력 요소.</p>
+  </header>
+
+  <!-- Variants -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Variants</h2>
+    </div>
+    <table class="token-table">
+      <thead><tr><th style="width:160px">Property</th><th>Values</th></tr></thead>
+      <tbody>
+        <tr><td>Type</td><td class="mono">IconOnly · TextIcon</td></tr>
+        <tr><td>Size</td><td class="mono">Md (18) · Sm (16)</td></tr>
+        <tr><td>State</td><td class="mono">Default · Disabled</td></tr>
+        <tr><td>Value</td><td class="mono">Off · On</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Matrix -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">State Matrix</h2>
+    </div>
+    <p class="section-desc">Type(IconOnly · TextIcon) × Size(Md · Sm) × State(Default · Disabled) × Value(Off · On).</p>
+
+    <div class="matrix">
+      <!-- header -->
+      <div class="cell head"></div>
+      <div class="cell head">Md · Off</div>
+      <div class="cell head">Md · On</div>
+      <div class="cell head">Sm · Off</div>
+      <div class="cell head">Sm · On</div>
+
+      <!-- IconOnly -->
+      <div class="cell section-head">IconOnly</div>
+
+      <div class="cell head row-head">Default</div>
+      <div class="cell"><span class="itui-checkbox-box"></span></div>
+      <div class="cell"><span class="itui-checkbox-box is-checked"></span></div>
+      <div class="cell"><span class="itui-checkbox itui-checkbox--sm"><span class="itui-checkbox-box"></span></span></div>
+      <div class="cell"><span class="itui-checkbox itui-checkbox--sm"><span class="itui-checkbox-box is-checked"></span></span></div>
+
+      <div class="cell head row-head">Disabled</div>
+      <div class="cell"><span class="itui-checkbox-box is-disabled"></span></div>
+      <div class="cell"><span class="itui-checkbox-box is-disabled is-checked"></span></div>
+      <div class="cell"><span class="itui-checkbox itui-checkbox--sm"><span class="itui-checkbox-box is-disabled"></span></span></div>
+      <div class="cell"><span class="itui-checkbox itui-checkbox--sm"><span class="itui-checkbox-box is-disabled is-checked"></span></span></div>
+
+      <!-- TextIcon -->
+      <div class="cell section-head">TextIcon</div>
+
+      <div class="cell head row-head">Default</div>
+      <div class="cell"><label class="itui-checkbox"><span class="itui-checkbox-box"></span><span>텍스트</span></label></div>
+      <div class="cell"><label class="itui-checkbox"><span class="itui-checkbox-box is-checked"></span><span>텍스트</span></label></div>
+      <div class="cell"><label class="itui-checkbox itui-checkbox--sm"><span class="itui-checkbox-box"></span><span>텍스트</span></label></div>
+      <div class="cell"><label class="itui-checkbox itui-checkbox--sm"><span class="itui-checkbox-box is-checked"></span><span>텍스트</span></label></div>
+
+      <div class="cell head row-head">Disabled</div>
+      <div class="cell"><label class="itui-checkbox is-disabled"><span class="itui-checkbox-box is-disabled"></span><span>텍스트</span></label></div>
+      <div class="cell"><label class="itui-checkbox is-disabled"><span class="itui-checkbox-box is-disabled is-checked"></span><span>텍스트</span></label></div>
+      <div class="cell"><label class="itui-checkbox itui-checkbox--sm is-disabled"><span class="itui-checkbox-box is-disabled"></span><span>텍스트</span></label></div>
+      <div class="cell"><label class="itui-checkbox itui-checkbox--sm is-disabled"><span class="itui-checkbox-box is-disabled is-checked"></span><span>텍스트</span></label></div>
+    </div>
+  </section>
+
+  <!-- Tokens -->
+  <section class="doc-section">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Tokens</h2>
+    </div>
+    <table class="token-table">
+      <thead><tr><th style="width:160px">Property</th><th>Md</th><th>Sm</th></tr></thead>
+      <tbody>
+        <tr><td>Height</td>    <td class="mono">18 (height.checkbox.md)</td><td class="mono">16 (height.checkbox.sm)</td></tr>
+        <tr><td>Padding</td>   <td class="mono">4 (spacing.xs)</td>          <td class="mono">4 (spacing.xs)</td></tr>
+        <tr><td>Gap</td>       <td class="mono">8 (spacing.sm)</td>          <td class="mono">8 (spacing.sm)</td></tr>
+        <tr><td>Radius</td>    <td class="mono">4 (radius.xs)</td>           <td class="mono">4 (radius.xs)</td></tr>
+        <tr><td>Stroke</td>    <td class="mono">1 (stroke.xs)</td>           <td class="mono">1 (stroke.xs)</td></tr>
+        <tr><td>Icon</td>      <td class="mono">16 (height.icon.sm)</td>     <td class="mono">12 (height.icon.xs)</td></tr>
+        <tr><td>Font Size</td> <td class="mono">14 (font.size.md)</td>       <td class="mono">12 (font.size.sm)</td></tr>
+        <tr><td>Width</td>     <td class="mono">hug (layout.width.hug)</td>  <td class="mono">hug</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="doc-footer">
+    <span><a href="../foundation.html">← Foundation</a> · <a href="button.html">Button</a> · <a href="badge.html">Badge</a></span>
+    <span>ITUI · Atomic / Checkbox</span>
+  </footer>
+</main>
+</body>
+</html>

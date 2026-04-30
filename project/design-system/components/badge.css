@@ -1,0 +1,51 @@
+/* ITUI · Atomic — Badge
+   Type: Badge | Circle | Overflow | Dot
+   Single size, single color (red).
+*/
+
+.itui-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  background: #F44336; /* color/semantic/red/500 */
+  color: #FFFFFF;
+  white-space: nowrap;
+  user-select: none;
+  line-height: 1;
+  box-sizing: border-box;
+  height: var(--height-badge);          /* 20 */
+  min-width: var(--height-badge);
+  padding: 0 var(--space-xs);            /* 4 */
+  font-size: var(--font-size-sm);        /* 12 */
+}
+
+/* ---------- Type: Circle (single number) ---------- */
+.itui-badge--circle { width: var(--height-badge); padding: 0; }
+
+/* ---------- Type: Dot (no text) ---------- */
+.itui-badge--dot {
+  padding: 0;
+  border-radius: 50%;
+  width: var(--height-dot-xs);           /* 6 */
+  height: var(--height-dot-xs);
+  min-width: var(--height-dot-xs);
+}
+
+/* ---------- Anchor wrapper ---------- */
+.itui-badge-anchor {
+  position: relative;
+  display: inline-flex;
+}
+.itui-badge-anchor > .itui-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  z-index: 1;
+}
+.itui-badge-anchor > .itui-badge--dot {
+  top: 0;
+  right: 0;
+}

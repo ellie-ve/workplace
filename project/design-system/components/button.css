@@ -1,0 +1,138 @@
+/* ITUI · Atomic — Button
+   Uses semantic role tokens (semantic.css) for all colors.
+*/
+
+.itui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-sm);
+  border: var(--stroke-xs) solid transparent;
+  cursor: pointer;
+  transition: background-color 80ms ease, color 80ms ease, border-color 80ms ease;
+  white-space: nowrap;
+  user-select: none;
+  background: transparent;
+}
+.itui-btn:focus-visible {
+  outline: 2px solid var(--border-primary-focus);
+  outline-offset: 2px;
+}
+.itui-btn .itui-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+/* ---------- Sizes ---------- */
+.itui-btn--lg {
+  height: var(--height-button-lg);     /* 48 */
+  padding: 0 var(--space-2xl);          /* 24 */
+  gap: var(--space-sm);                 /* 8 */
+  font-size: var(--font-size-lg);       /* 16 */
+  line-height: 24px;
+}
+.itui-btn--lg .itui-btn-icon { width: var(--height-icon-lg); height: var(--height-icon-lg); } /* 20 */
+
+.itui-btn--md {
+  height: var(--height-button-md);     /* 40 */
+  padding: 0 var(--space-xl);           /* 20 */
+  gap: var(--space-sm);                 /* 8 */
+  font-size: var(--font-size-md);       /* 14 */
+  line-height: 20px;
+}
+.itui-btn--md .itui-btn-icon { width: var(--height-icon-lg); height: var(--height-icon-lg); }
+
+.itui-btn--sm {
+  height: var(--height-button-sm);     /* 32 */
+  padding: 0 var(--space-lg);           /* 16 */
+  gap: var(--space-xs);                 /* 4 */
+  font-size: var(--font-size-md);       /* 14 */
+  line-height: 20px;
+}
+.itui-btn--sm .itui-btn-icon { width: var(--height-icon-md); height: var(--height-icon-md); }
+
+/* IconOnly — square */
+.itui-btn--icon-only.itui-btn--lg { width: var(--height-button-lg); padding: 0; }
+.itui-btn--icon-only.itui-btn--md { width: var(--height-button-md); padding: 0; }
+.itui-btn--icon-only.itui-btn--sm { width: var(--height-button-sm); padding: 0; }
+
+/* ---------- Style: Primary (filled brand) ---------- */
+.itui-btn--primary {
+  background: var(--surface-primary-default);
+  color: var(--text-primary-inverse);
+  border-color: transparent;
+}
+.itui-btn--primary:hover  { background: var(--surface-primary-hover); }
+.itui-btn--primary:active,
+.itui-btn--primary.is-pressed { background: var(--surface-primary-pressed); }
+.itui-btn--primary.is-disabled,
+.itui-btn--primary[disabled] {
+  background: var(--surface-disabled-default);
+  color: var(--text-neutral-disabled);
+  cursor: not-allowed;
+}
+
+/* ---------- Style: Secondary (subtle grey fill) ---------- */
+.itui-btn--secondary {
+  background: var(--surface-subtle-default);
+  color: var(--text-neutral-strong);
+  border-color: transparent;
+}
+.itui-btn--secondary:hover { background: var(--surface-subtle-hover); }
+.itui-btn--secondary:active,
+.itui-btn--secondary.is-pressed { background: var(--surface-subtle-pressed); }
+.itui-btn--secondary.is-disabled,
+.itui-btn--secondary[disabled] {
+  background: var(--surface-disabled-default);
+  color: var(--text-neutral-disabled);
+  cursor: not-allowed;
+}
+
+/* ---------- Style: Alternative (outlined, brand) ---------- */
+.itui-btn--alternative {
+  background: var(--surface-secondary-default);          /* white */
+  color: var(--text-primary-default);                    /* sky/500 */
+  border-color: var(--border-primary-default);           /* sky/500 */
+}
+.itui-btn--alternative:hover {
+  background: var(--surface-primary-subtle);             /* sky/50 */
+  color: var(--text-primary-hover);
+  border-color: var(--border-primary-hover);
+}
+.itui-btn--alternative:active,
+.itui-btn--alternative.is-pressed {
+  background: var(--surface-primary-muted);              /* sky/100 */
+  color: var(--text-primary-pressed);
+  border-color: var(--border-primary-pressed);
+}
+.itui-btn--alternative.is-disabled,
+.itui-btn--alternative[disabled] {
+  background: var(--surface-secondary-default);
+  color: var(--text-neutral-disabled);
+  border-color: var(--border-neutral-disabled);
+  cursor: not-allowed;
+}
+
+/* ---------- Style: Link ---------- */
+.itui-btn--link {
+  background: transparent;
+  color: var(--text-primary-default);
+  border-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  height: auto;
+  border-radius: 0;
+}
+.itui-btn--link:hover  { color: var(--text-primary-hover); }
+.itui-btn--link:active,
+.itui-btn--link.is-pressed { color: var(--text-primary-pressed); }
+.itui-btn--link.is-disabled,
+.itui-btn--link[disabled] {
+  color: var(--text-neutral-disabled);
+  cursor: not-allowed;
+}
+.itui-btn--link.is-underline { text-decoration: underline; text-underline-offset: 3px; }

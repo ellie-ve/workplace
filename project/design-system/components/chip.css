@@ -1,0 +1,127 @@
+/* ITUI · Atomic — Chip
+   Style: Outline | Filled
+   Size:  Lg 32 | Md 28 | Sm 24
+   Type:  Label | LabelClose | CheckLabel | CheckLabelClose | AvatarLabel | AvatarLabelClose
+   State: Default | Hover | Selected | Disabled
+*/
+
+.itui-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);                    /* 4 */
+  padding: 0 var(--space-sm);              /* 0 8 */
+  height: var(--height-chip-md);           /* 28 — Md default */
+  border-radius: var(--radius-full);
+  border: var(--stroke-xs) solid transparent;
+  background: transparent;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);          /* 14 */
+  line-height: 1;
+  color: var(--text-neutral-default);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: background-color 80ms ease, border-color 80ms ease, color 80ms ease;
+  box-sizing: border-box;
+}
+
+/* Sizes */
+.itui-chip--lg { height: var(--height-chip-lg); font-size: var(--font-size-md); }
+.itui-chip--md { height: var(--height-chip-md); font-size: var(--font-size-md); }
+.itui-chip--sm { height: var(--height-chip-sm); font-size: var(--font-size-sm); padding: 0 var(--space-xs); }
+
+/* Padding for chips with leading/trailing icons keeps icon flush */
+.itui-chip.has-leading  { padding-left:  var(--space-xs); }
+.itui-chip.has-trailing { padding-right: var(--space-xs); }
+
+/* ---------------- Outline ---------------- */
+.itui-chip--outline {
+  background: var(--surface-secondary-default);
+  border-color: var(--border-neutral-default);
+  color: var(--text-neutral-default);
+}
+.itui-chip--outline:hover:not(.is-disabled),
+.itui-chip--outline.is-hover {
+  background: var(--surface-primary-subtle);
+  border-color: var(--border-primary-hover);
+  color: var(--text-primary-default);
+}
+.itui-chip--outline.is-selected {
+  background: var(--surface-primary-subtle);
+  border-color: var(--surface-primary-default);
+  color: var(--text-primary-default);
+}
+.itui-chip--outline.is-disabled {
+  background: var(--surface-disabled-default);
+  border-color: var(--border-neutral-disabled);
+  color: var(--text-neutral-disabled);
+  cursor: not-allowed;
+}
+
+/* ---------------- Filled ---------------- */
+.itui-chip--filled {
+  background: var(--surface-tertiary-default);
+  border-color: transparent;
+  color: var(--text-neutral-default);
+}
+.itui-chip--filled:hover:not(.is-disabled),
+.itui-chip--filled.is-hover {
+  background: var(--surface-primary-subtle);
+  color: var(--text-primary-default);
+}
+.itui-chip--filled.is-selected {
+  background: var(--surface-primary-default);
+  color: #FFFFFF;
+}
+.itui-chip--filled.is-disabled {
+  background: var(--surface-disabled-default);
+  color: var(--text-neutral-disabled);
+  cursor: not-allowed;
+}
+
+/* Icons inside chip */
+.itui-chip-icon {
+  width: var(--height-icon-md);            /* 16 */
+  height: var(--height-icon-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.itui-chip--sm .itui-chip-icon {
+  width: 12px;
+  height: 12px;
+}
+.itui-chip-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Close button area */
+.itui-chip-close {
+  cursor: pointer;
+  opacity: 0.7;
+}
+.itui-chip-close:hover { opacity: 1; }
+
+/* Avatar */
+.itui-chip-avatar {
+  width: var(--height-icon-md);
+  height: var(--height-icon-md);
+  border-radius: var(--radius-full);
+  background: var(--color-neutral-300);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-neutral-600);
+  font-size: 10px;
+}
+.itui-chip--sm .itui-chip-avatar { width: 12px; height: 12px; font-size: 8px; }
+
+/* Focus */
+.itui-chip:focus-visible {
+  outline: 2px solid var(--border-primary-focus);
+  outline-offset: 2px;
+}

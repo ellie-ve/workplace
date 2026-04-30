@@ -1,0 +1,113 @@
+/* ==========================================================================
+   ITUI Design System — Semantic Role Tokens (Mode 1 / Light)
+   Source: Mode 1.tokens.json — verified
+   These map raw colors to roles: text · icon · surface · border · dim
+   COMPONENTS SHOULD USE THESE ROLE TOKENS, NOT RAW PALETTE COLORS.
+   ========================================================================== */
+
+:root {
+  /* ===========================================================
+     TEXT
+     =========================================================== */
+  --text-primary-default: #009CE0;
+  --text-primary-hover:   #33B0E6;
+  --text-primary-pressed: #008ECC;
+  --text-primary-inverse: #FFFFFF;
+
+  --text-neutral-default:  #0F0F0F;
+  --text-neutral-strong:   #1A1A1A;
+  --text-neutral-muted:    #595858;
+  --text-neutral-subtle:   #9E9E9E;
+  --text-neutral-disabled: #C2C2C2;
+  --text-neutral-inverse:  #FFFFFF;
+
+  --text-error:       #F44336;
+  --text-information: #1677FF;
+  --text-success:     #4CAF50;
+  --text-warning:     #FFAD33;
+  --text-inverse:     #FFFFFF;
+
+  /* ===========================================================
+     ICON  (mirrors text)
+     =========================================================== */
+  --icon-primary-default: #009CE0;
+  --icon-primary-hover:   #33B0E6;
+  --icon-primary-pressed: #008ECC;
+  --icon-primary-inverse: #FFFFFF;
+
+  --icon-neutral-default:  #0F0F0F;
+  --icon-neutral-strong:   #1A1A1A;
+  --icon-neutral-muted:    #595858;
+  --icon-neutral-subtle:   #9E9E9E;
+  --icon-neutral-disabled: #C2C2C2;
+  --icon-neutral-inverse:  #FFFFFF;
+
+  --icon-error:       #F44336;
+  --icon-information: #1677FF;
+  --icon-success:     #4CAF50;
+  --icon-warning:     #FFAD33;
+  --icon-inverse:     #FFFFFF;
+
+  /* ===========================================================
+     SURFACE  (backgrounds)
+     =========================================================== */
+  /* Primary fills */
+  --surface-primary-default: #009CE0;
+  --surface-primary-hover:   #54BDEA;
+  --surface-primary-pressed: #008ECC;
+  --surface-primary-active:  #008ECC;
+  --surface-primary-subtle:  #E6F5FC;
+  --surface-primary-muted:   #B0E0F5;
+
+  /* Neutral — secondary (page / card surface, white) */
+  --surface-secondary-default: #FFFFFF;
+  --surface-secondary-hover:   #F5F5F5;
+  --surface-secondary-pressed: #EDEDED;
+
+  /* Neutral — strong (dark fills, e.g. tooltip) */
+  --surface-strong-default: #2A2A2A;
+
+  /* Neutral — subtle (very light grey, e.g. hover row) */
+  --surface-subtle-default: #F5F5F5;
+  --surface-subtle-hover:   #EDEDED;
+  --surface-subtle-pressed: #DADADA;
+
+  /* Neutral — disabled */
+  --surface-disabled-default: #F5F5F5;
+  --surface-disabled-inverse: #EDEDED;
+
+  /* Semantic backgrounds (50 step) */
+  --surface-error:       #FEECEB;
+  --surface-information: #E8F1FF;
+  --surface-success:     #EDF7EE;
+  --surface-warning:     #FFF5E6;
+  --surface-inverse:     #FFFFFF;
+
+  /* ===========================================================
+     BORDER
+     =========================================================== */
+  --border-primary-default:  #009CE0;
+  --border-primary-hover:    #54BDEA;
+  --border-primary-pressed:  #008ECC;
+  --border-primary-focus:    #E6F5FC;
+  --border-primary-active:   #008ECC;
+  --border-primary-selected: #009CE0;
+  --border-primary-subtle:   #B0E0F5;
+  --border-primary-muted:    #8AD1F1;
+
+  --border-neutral-default:  #595858;
+  --border-neutral-strong:   #1A1A1A;
+  --border-neutral-subtle:   #EDEDED;
+  --border-neutral-disabled: #C2C2C2;
+  --border-neutral-inverse:  #FFFFFF;
+
+  --border-error:       #F44336;
+  --border-information: #1677FF;
+  --border-success:     #4CAF50;
+  --border-warning:     #FFAD33;
+
+  /* ===========================================================
+     DIM (overlays / scrim)
+     =========================================================== */
+  --dim-black: rgba(26, 26, 26, 0.40);
+}

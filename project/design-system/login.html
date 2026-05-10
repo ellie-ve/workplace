@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ShEEtric · 로그인</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="semantic.css" />
+<link rel="stylesheet" href="components/button.css" />
+<link rel="stylesheet" href="components/checkbox.css" />
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  font-family: var(--font-family-base);
+  background: var(--color-neutral-50);
+  color: var(--color-neutral-900);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ── 페이지 레이아웃 ── */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl);
+}
+
+/* ── 카드 ── */
+.card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 48px 56px 44px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.07);
+}
+
+/* ── 로고 ── */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 20px;
+}
+.logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-neutral-950);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.logo-ee {
+  display: inline-flex;
+  gap: 3px;
+  margin: 0 1px;
+  align-items: center;
+}
+.logo-e-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5px;
+  width: 11px;
+}
+.logo-e-block span {
+  display: block;
+  height: 3px;
+  border-radius: 1px;
+  background: #4CAF50;
+}
+.logo-e-block span:nth-child(1) { width: 100%; }
+.logo-e-block span:nth-child(2) { width: 75%; }
+.logo-e-block span:nth-child(3) { width: 100%; }
+
+/* ── 헤더 텍스트 ── */
+.card-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.card-title {
+  font-size: var(--font-size-3xl); /* 24px */
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-950);
+  margin: 0 0 8px;
+  letter-spacing: var(--font-heading-3xl-ls);
+  line-height: var(--font-heading-3xl-lh);
+}
+.card-desc {
+  font-size: var(--font-size-md); /* 14px */
+  color: var(--color-neutral-500);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── 폼 ── */
+.form { display: flex; flex-direction: column; gap: var(--space-xl); /* 20px */ }
+
+.field { display: flex; flex-direction: column; gap: var(--space-xs); /* 4px */ }
+
+.field-label {
+  font-size: var(--font-size-md); /* 14px */
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-800);
+  line-height: 1.4;
+}
+
+/* ITUI Input 스펙 적용 */
+.itui-input {
+  width: 100%;
+  height: var(--height-input); /* 48px */
+  padding: 0 var(--space-md); /* 12px */
+  border: var(--stroke-xs) solid var(--border-neutral-subtle); /* 1px, #EDEDED */
+  border-radius: var(--radius-sm); /* 8px */
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-lg); /* 16px */
+  color: var(--text-neutral-default);
+  background: #fff;
+  outline: none;
+  transition: border-color 100ms;
+  appearance: none;
+}
+.itui-input::placeholder {
+  color: var(--text-neutral-subtle); /* #9E9E9E */
+}
+.itui-input:hover {
+  border-color: var(--color-neutral-300);
+}
+.itui-input:focus {
+  border-color: var(--color-success-500);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.12);
+}
+
+/* ── 체크박스 행 ── */
+.row-middle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: calc(var(--space-xs) * -1); /* 시각적 간격 보정 */
+}
+.row-middle .itui-checkbox {
+  padding: var(--space-xs);
+  gap: var(--space-sm);
+  font-size: var(--font-size-md);
+  color: var(--text-neutral-muted);
+}
+.forgot-link {
+  font-size: var(--font-size-md); /* 14px */
+  color: var(--text-neutral-muted);
+  text-decoration: none;
+  line-height: 1.4;
+}
+.forgot-link:hover {
+  color: var(--text-neutral-default);
+  text-decoration: underline;
+}
+
+/* ── 로그인 버튼 (ITUI button + Sheetric green) ── */
+.btn-login {
+  width: 100%;
+  height: var(--height-button-lg); /* 48px */
+  padding: 0 var(--space-2xl);
+  border-radius: var(--radius-sm);
+  border: none;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-lg); /* 16px */
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background-color 80ms ease;
+  background: var(--color-success-500); /* #4CAF50 */
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+.btn-login:hover  { background: #43A047; }
+.btn-login:active { background: #388E3C; }
+
+/* ── 하단 회원가입 안내 ── */
+.card-footer {
+  text-align: center;
+  margin-top: var(--space-xl); /* 20px */
+  font-size: var(--font-size-md); /* 14px */
+  color: var(--text-neutral-muted);
+}
+.signup-link {
+  color: var(--text-primary-default); /* sky/500 */
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+}
+.signup-link:hover {
+  color: var(--text-primary-hover);
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="card">
+
+    <!-- 로고 -->
+    <div class="logo">
+      <span class="logo-text">Sh</span>
+      <span class="logo-ee">
+        <span class="logo-e-block">
+          <span></span><span></span><span></span>
+        </span>
+        <span class="logo-e-block">
+          <span></span><span></span><span></span>
+        </span>
+      </span>
+      <span class="logo-text">tric</span>
+    </div>
+
+    <!-- 헤더 -->
+    <div class="card-header">
+      <h1 class="card-title">로그인</h1>
+      <p class="card-desc">등록된 계정으로 로그인해 주세요.</p>
+    </div>
+
+    <!-- 폼 -->
+    <form class="form" onsubmit="return false;">
+
+      <!-- 이메일 -->
+      <div class="field">
+        <label class="field-label" for="email">이메일</label>
+        <input
+          id="email"
+          type="email"
+          class="itui-input"
+          placeholder="이메일을 입력하세요."
+          autocomplete="email"
+        />
+      </div>
+
+      <!-- 비밀번호 -->
+      <div class="field">
+        <label class="field-label" for="password">비밀번호</label>
+        <input
+          id="password"
+          type="password"
+          class="itui-input"
+          placeholder="비밀번호를 입력하세요."
+          autocomplete="current-password"
+        />
+      </div>
+
+      <!-- 로그인 상태 유지 + 비밀번호 찾기 -->
+      <div class="row-middle">
+        <label class="itui-checkbox">
+          <span class="itui-checkbox-box"></span>
+          <span>로그인 상태 유지</span>
+        </label>
+        <a href="#" class="forgot-link">비밀번호 찾기</a>
+      </div>
+
+      <!-- 로그인 버튼 -->
+      <button type="submit" class="btn-login">로그인</button>
+
+    </form>
+
+    <!-- 회원가입 안내 -->
+    <p class="card-footer">
+      아직 회원이 아닌가요?&nbsp;
+      <a href="#" class="signup-link">회원가입</a>
+    </p>
+
+  </div>
+</div>
+</body>
+</html>

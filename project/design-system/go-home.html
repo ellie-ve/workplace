@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ITUI · 홈으로 이동하기</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="semantic.css" />
+<link rel="stylesheet" href="components/button.css" />
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  font-family: var(--font-family-base);
+  background: #FAFAFA;
+  color: var(--color-neutral-900);
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px var(--space-3xl);
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  padding: 56px 64px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.06);
+}
+
+.card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-primary-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  color: var(--text-primary-default);
+}
+.card-icon svg { width: 28px; height: 28px; display: block; }
+
+.card-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--color-primary-600);
+  font-family: var(--font-family-mono);
+  margin: 0 0 10px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-neutral-950);
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: var(--color-neutral-500);
+  line-height: 1.6;
+  margin: 0 0 36px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+/* 화살표 아이콘 */
+.icon-arrow-right {
+  display: inline-flex;
+}
+.icon-home {
+  display: inline-flex;
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="card">
+
+    <div class="card-icon">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.5 11.375L14 3.5L24.5 11.375V24.5H17.5V17.5H10.5V24.5H3.5V11.375Z"
+          stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <p class="card-eyebrow">ITUI Design System</p>
+    <h1 class="card-title">디자인 시스템 홈으로<br>돌아가시겠어요?</h1>
+    <p class="card-desc">현재 페이지를 벗어나 ITUI 컴포넌트 전체 목록으로 이동합니다. Foundation, Atomic, Composite 등 모든 구성 요소를 한눈에 확인할 수 있습니다.</p>
+
+    <div class="btn-group">
+      <a href="index.html" class="itui-btn itui-btn--primary itui-btn--lg" style="width:100%;justify-content:center;text-decoration:none;">
+        <span class="itui-btn-icon icon-home">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.5 8.125L10 2.5L17.5 8.125V17.5H12.5V12.5H7.5V17.5H2.5V8.125Z"
+              stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        홈으로 이동하기
+      </a>
+
+      <button onclick="history.back()" class="itui-btn itui-btn--secondary itui-btn--lg" style="width:100%;">
+        이전 페이지로 돌아가기
+      </button>
+
+      <a href="foundation.html" class="itui-btn itui-btn--link itui-btn--md" style="text-decoration:none;">
+        Foundation 바로가기
+        <span class="itui-btn-icon icon-arrow-right">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 10H16M16 10L11 5M16 10L11 15"
+              stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

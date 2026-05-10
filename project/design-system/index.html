@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ITUI Design System</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="semantic.css" />
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  font-family: var(--font-family-base);
+  background: #FAFAFA;
+  color: var(--color-neutral-900);
+  -webkit-font-smoothing: antialiased;
+}
+.page {
+  max-width: var(--layout-container);
+  margin: 0 auto;
+  padding: 64px var(--layout-margin) 96px;
+}
+
+/* Hero */
+.hero { padding-bottom: 48px; border-bottom: 1px solid var(--color-neutral-200); margin-bottom: 56px; }
+.hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .10em; text-transform: uppercase; color: var(--color-primary-600); margin: 0 0 16px; }
+.hero-title { font-size: 48px; font-weight: 700; letter-spacing: -.03em; color: var(--color-neutral-950); margin: 0 0 16px; line-height: 1.1; }
+.hero-title span { color: var(--color-primary-500); }
+.hero-desc { font-size: 18px; color: var(--color-neutral-600); margin: 0; max-width: 640px; line-height: 1.55; }
+.stats { display: flex; gap: 40px; margin-top: 32px; }
+.stat-item { display: flex; flex-direction: column; gap: 4px; }
+.stat-value { font-size: 28px; font-weight: 700; color: var(--color-neutral-950); letter-spacing: -.02em; }
+.stat-label { font-size: 12px; font-family: var(--font-family-mono); color: var(--color-neutral-500); text-transform: uppercase; letter-spacing: .06em; }
+
+/* Group */
+.group { margin-bottom: 56px; }
+.group-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--color-neutral-200); }
+.group-num { font-family: var(--font-family-mono); font-size: 11px; color: var(--color-neutral-400); }
+.group-title { font-size: 20px; font-weight: 600; color: var(--color-neutral-950); margin: 0; letter-spacing: -.01em; }
+.group-count { font-family: var(--font-family-mono); font-size: 11px; color: var(--color-neutral-400); margin-left: auto; }
+
+/* Card grid */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+
+/* Component card */
+.comp-card {
+  background: #fff;
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 100ms, box-shadow 100ms;
+}
+a.comp-card:hover { border-color: var(--color-primary-300); box-shadow: 0 2px 12px rgba(0,156,224,.10); }
+.comp-card--planned { opacity: .6; }
+
+.card-preview {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--color-neutral-100);
+  background: var(--color-neutral-50);
+}
+a.comp-card .card-preview { background: linear-gradient(135deg, var(--color-primary-50) 0%, #fff 100%); }
+
+.card-body { padding: 14px 16px 16px; }
+.card-name { font-size: 14px; font-weight: 600; color: var(--color-neutral-950); margin: 0 0 4px; }
+.card-desc { font-size: 12px; color: var(--color-neutral-500); margin: 0 0 10px; line-height: 1.4; }
+.card-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-family-mono); font-size: 10px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: 3px 7px; border-radius: 999px;
+}
+.card-badge--done { background: #EDF7EE; color: #2D7D30; }
+.card-badge--planned { background: var(--color-neutral-100); color: var(--color-neutral-500); }
+.badge-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; display: inline-block; }
+
+/* Previews */
+.prev-swatch { width: 28px; height: 28px; border-radius: 4px; display: inline-block; }
+.prev-swatches { display: flex; gap: 4px; }
+.prev-btn {
+  display: inline-flex; align-items: center; height: 32px; padding: 0 14px;
+  border-radius: 4px; font-size: 13px; font-weight: 600;
+  background: var(--surface-primary-default); color: #fff; border: none;
+}
+.prev-btn-alt {
+  display: inline-flex; align-items: center; height: 32px; padding: 0 14px;
+  border-radius: 4px; font-size: 13px; font-weight: 600;
+  background: #fff; color: var(--color-primary-500);
+  border: 1px solid var(--color-primary-500);
+}
+.prev-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; border-radius: 999px;
+  background: var(--color-error-500); color: #fff; font-size: 11px; font-weight: 700;
+}
+.prev-chip {
+  display: inline-flex; align-items: center; height: 28px; padding: 0 10px;
+  border-radius: 999px; border: 1px solid var(--border-neutral-default);
+  font-size: 12px; background: #fff; color: var(--text-neutral-default);
+}
+.prev-chip-sel {
+  display: inline-flex; align-items: center; height: 28px; padding: 0 10px;
+  border-radius: 999px; border: 1px solid var(--surface-primary-default);
+  font-size: 12px; background: var(--surface-primary-subtle); color: var(--text-primary-default);
+}
+.prev-check {
+  width: 18px; height: 18px; border-radius: 4px;
+  border: 1.5px solid var(--color-neutral-400); background: #fff; display: inline-block;
+}
+.prev-check-on {
+  width: 18px; height: 18px; border-radius: 4px;
+  background: var(--surface-primary-default); border: none; display: inline-block;
+  position: relative;
+}
+.prev-check-on::after {
+  content: '';
+  position: absolute; left: 3px; top: 5px;
+  width: 10px; height: 5px;
+  border-left: 2px solid #fff; border-bottom: 2px solid #fff;
+  transform: rotate(-45deg);
+}
+
+/* Footer */
+.page-footer {
+  margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--color-neutral-200);
+  font-family: var(--font-family-mono); font-size: 11px; color: var(--color-neutral-400);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-logo { font-weight: 700; color: var(--color-neutral-700); letter-spacing: .04em; }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header class="hero">
+    <p class="hero-eyebrow">EchoIT · Design System</p>
+    <h1 class="hero-title">IT<span>UI</span></h1>
+    <p class="hero-desc">EchoIT의 내부 디자인 시스템. 재사용 가능한 컴포넌트와 디자인 토큰을 기반으로 일관된 사용자 경험을 구성합니다.</p>
+    <div class="stats">
+      <div class="stat-item"><span class="stat-value">5</span><span class="stat-label">구현 완료</span></div>
+      <div class="stat-item"><span class="stat-value">33</span><span class="stat-label">전체 컴포넌트</span></div>
+      <div class="stat-item"><span class="stat-value">270+</span><span class="stat-label">디자인 토큰</span></div>
+    </div>
+  </header>
+
+  <!-- 00 Foundation -->
+  <section class="group">
+    <div class="group-header">
+      <span class="group-num">00</span>
+      <h2 class="group-title">Foundation</h2>
+      <span class="group-count">1 / 1 구현 완료</span>
+    </div>
+    <div class="card-grid">
+      <a class="comp-card" href="foundation.html">
+        <div class="card-preview">
+          <div class="prev-swatches">
+            <span class="prev-swatch" style="background:#009CE0"></span>
+            <span class="prev-swatch" style="background:#595858"></span>
+            <span class="prev-swatch" style="background:#4CAF50"></span>
+            <span class="prev-swatch" style="background:#F44336"></span>
+            <span class="prev-swatch" style="background:#FFAD33"></span>
+            <span class="prev-swatch" style="background:#1677FF"></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name">Foundation</p>
+          <p class="card-desc">Colors, Spacing, Typography, Radius, Stroke, Heights</p>
+          <span class="card-badge card-badge--done"><span class="badge-dot"></span>구현 완료</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 01 Atomic -->
+  <section class="group">
+    <div class="group-header">
+      <span class="group-num">01</span>
+      <h2 class="group-title">Atomic</h2>
+      <span class="group-count">4 / 11 구현 완료</span>
+    </div>
+    <div class="card-grid">
+
+      <a class="comp-card" href="components/badge.html">
+        <div class="card-preview">
+          <div style="display:flex;gap:10px;align-items:center">
+            <span class="prev-badge">19</span>
+            <span class="prev-badge">100</span>
+            <span class="prev-badge" style="width:6px;height:6px;min-width:0;padding:0;font-size:0"></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name">Badge</p>
+          <p class="card-desc">Circle, Overflow, Dot — 단일 red 컬러</p>
+          <span class="card-badge card-badge--done"><span class="badge-dot"></span>구현 완료</span>
+        </div>
+      </a>
+
+      <a class="comp-card" href="components/button.html">
+        <div class="card-preview">
+          <div style="display:flex;gap:8px;align-items:center">
+            <span class="prev-btn">Primary</span>
+            <span class="prev-btn-alt">Alt</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name">Button</p>
+          <p class="card-desc">Primary, Alternative, Secondary, Link × Lg/Md/Sm</p>
+          <span class="card-badge card-badge--done"><span class="badge-dot"></span>구현 완료</span>
+        </div>
+      </a>
+
+      <a class="comp-card" href="components/checkbox.html">
+        <div class="card-preview">
+          <div style="display:flex;gap:10px;align-items:center">
+            <span class="prev-check"></span>
+            <span class="prev-check-on"></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name">Checkbox</p>
+          <p class="card-desc">IconOnly, TextIcon × Md/Sm × Default/Disabled</p>
+          <span class="card-badge card-badge--done"><span class="badge-dot"></span>구현 완료</span>
+        </div>
+      </a>
+
+      <a class="comp-card" href="components/chip.html">
+        <div class="card-preview">
+          <div style="display:flex;gap:6px;align-items:center">
+            <span class="prev-chip">텍스트</span>
+            <span class="prev-chip-sel">선택됨</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name">Chip</p>
+          <p class="card-desc">Outline/Filled × 6 Type × Lg/Md/Sm × 4 State</p>
+          <span class="card-badge card-badge--done"><span class="badge-dot"></span>구현 완료</span>
+        </div>
+      </a>
+
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview">
+          <div style="display:flex;flex-direction:column;gap:10px;width:80px">
+            <div style="height:1px;background:var(--color-neutral-300)"></div>
+            <div style="height:0;border-top:1px dashed var(--color-neutral-300)"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name">Divider</p>
+          <p class="card-desc">Horizontal/Vertical × Solid/Dashed</p>
+          <span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview">
+          <div style="width:120px;height:32px;border:1px solid var(--color-neutral-300);border-radius:4px;background:#fff;padding:0 10px;display:flex;align-items:center">
+            <span style="font-size:12px;color:var(--color-neutral-400)">입력하세요</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name">Input</p>
+          <p class="card-desc">Default/Password/Search/Textarea × 5 State × 3 Size</p>
+          <span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:13px;font-weight:600;color:var(--color-neutral-700)">레이블 <span style="color:var(--color-error-500)">*</span></span>
+            <span style="font-size:12px;color:var(--color-neutral-400)">(선택)</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name">Label</p>
+          <p class="card-desc">Required/Optional × Sm/Md</p>
+          <span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview">
+          <div style="display:flex;gap:12px;align-items:center">
+            <span style="width:18px;height:18px;border-radius:50%;border:1.5px solid var(--color-neutral-400);display:inline-block"></span>
+            <span style="width:18px;height:18px;border-radius:50%;border:5px solid var(--surface-primary-default);display:inline-block;background:#fff"></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name">Radio</p>
+          <p class="card-desc">5 State × With/Without Label</p>
+          <span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview">
+          <div style="width:120px;position:relative;padding:8px 0">
+            <div style="height:4px;background:var(--color-neutral-200);border-radius:2px;position:relative">
+              <div style="height:4px;width:60%;background:var(--surface-primary-default);border-radius:2px"></div>
+            </div>
+            <div style="width:14px;height:14px;border-radius:50%;background:var(--surface-primary-default);position:absolute;top:3px;left:calc(60% - 7px)"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name">Slider</p>
+          <p class="card-desc">Single/Range × Default/Hover/Disabled × Sm/Md</p>
+          <span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview">
+          <div style="display:flex;gap:6px">
+            <span style="display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:4px;background:var(--surface-primary-default);color:#fff;font-size:11px;font-weight:600">Filled</span>
+            <span style="display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:4px;border:1px solid var(--border-primary-default);color:var(--text-primary-default);font-size:11px">Outlined</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name">Tag</p>
+          <p class="card-desc">Filled/Outlined/Ghost × Sm/Md × Closable</p>
+          <span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:44px;height:24px;border-radius:12px;background:var(--color-neutral-300);display:flex;align-items:center;padding:3px">
+              <div style="width:18px;height:18px;border-radius:50%;background:#fff"></div>
+            </div>
+            <div style="width:44px;height:24px;border-radius:12px;background:var(--surface-primary-default);display:flex;align-items:center;justify-content:flex-end;padding:3px">
+              <div style="width:18px;height:18px;border-radius:50%;background:#fff"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-name">Toggle</p>
+          <p class="card-desc">On/Off/Disabled × Sm/Md × With/Without Label</p>
+          <span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 02 Composite -->
+  <section class="group">
+    <div class="group-header">
+      <span class="group-num">02</span>
+      <h2 class="group-title">Composite</h2>
+      <span class="group-count">0 / 14 구현 완료</span>
+    </div>
+    <div class="card-grid">
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Accordion</p><p class="card-desc">Collapse/Expand × 5 Style</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Bubble</p><p class="card-desc">Incoming/Outgoing × Bubble/Group</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Calendar</p><p class="card-desc">Calendar/Schedule View</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Card</p><p class="card-desc">Blue/Neutral/Indigo/Green</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Carousel</p><p class="card-desc">Auto/Manual × Dot/Number</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Date Picker</p><p class="card-desc">Single/Range × 4 State</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Modal</p><p class="card-desc">Sm/Md/Lg × Single/Double CTA</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Pagination</p><p class="card-desc">Number/Prev·Next × 3 State</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Pop-up</p><p class="card-desc">Alert/Confirm × Single/Double</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Progress</p><p class="card-desc">Linear/Circular × Sm/Md/Lg</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Scroll Bar</p><p class="card-desc">Vertical/Horizontal × 3 State</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Stepper</p><p class="card-desc">Horizontal/Vertical × 4 State</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Tab</p><p class="card-desc">Default/Filled/Underline × 4 State</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Tooltip</p><p class="card-desc">Top/Bottom/Left/Right × Dark/Light</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Data Display -->
+  <section class="group">
+    <div class="group-header">
+      <span class="group-num">03</span>
+      <h2 class="group-title">Data Display</h2>
+      <span class="group-count">0 / 5 구현 완료</span>
+    </div>
+    <div class="card-grid">
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Empty State</p><p class="card-desc">NoContents / NoSearchResults</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">List</p><p class="card-desc">LabelIcon/Avatar × 4 State × Group</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Profile</p><p class="card-desc">Image/Initial × 6 Size × Group</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Rating</p><p class="card-desc">Filled/Half/Empty × Rate Base/Group</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Table</p><p class="card-desc">10 Type × Header/Cell States</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Feedback -->
+  <section class="group">
+    <div class="group-header">
+      <span class="group-num">04</span>
+      <h2 class="group-title">Feedback</h2>
+      <span class="group-count">0 / 5 구현 완료</span>
+    </div>
+    <div class="card-grid">
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Backdrop</p><p class="card-desc">Dim / Blur</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Skeleton</p><p class="card-desc">Wave/Pulse × Text/Rectangle/Circle</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Snackbar</p><p class="card-desc">Light/Dark × Optional CTA</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Spinner</p><p class="card-desc">Lg/Md/Sm × Icon/Description</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Toast</p><p class="card-desc">Normal/Light/Dark × 4 Semantic</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 Navigation & Overlay -->
+  <section class="group">
+    <div class="group-header">
+      <span class="group-num">05</span>
+      <h2 class="group-title">Navigation & Overlay</h2>
+      <span class="group-count">0 / 8 구현 완료</span>
+    </div>
+    <div class="card-grid">
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Bottom Sheet</p><p class="card-desc">Regular/Tall/Full × Title × CTA</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Breadcrumb</p><p class="card-desc">Slash/Arrow × Default/Hover/Selected</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Floating Button</p><p class="card-desc">Md/Sm × Default/Hover/Pressed</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">GNB</p><p class="card-desc">Default/Search/Login/Logout</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Navigation</p><p class="card-desc">Bottom/Top/Base × Default/Selected</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Overflow Menu</p><p class="card-desc">Default/Hover/Pressed/Disabled</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">Popover</p><p class="card-desc">8 Content Type × 3 State</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+      <div class="comp-card comp-card--planned">
+        <div class="card-preview"></div>
+        <div class="card-body"><p class="card-name">LNB</p><p class="card-desc">Default/Hover/Active/Disabled × 1–2depth</p><span class="card-badge card-badge--planned"><span class="badge-dot"></span>예정</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <span class="footer-logo">ITUI</span>
+    <span>EchoIT Design System · 2026</span>
+  </footer>
+
+</main>
+</body>
+</html>
